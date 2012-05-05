@@ -1,5 +1,7 @@
-<ul>
-  <li><%= link_to 'Unlock Filter', unlock_url %></li>
-  <li><%= link_to 'Lock Filter', lock_url %></li>
-  <li><%= link_to 'Manage Users', users_path %></li>
-</ul>
+<form action="<%= unlock_url %>">
+  <%= submit_tag 'Unlock Filter' %>
+</form>
+
+<form action="<%= lock_url %>">
+  <%= submit_tag 'Lock Filter' %>
+</form>

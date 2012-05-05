@@ -20,10 +20,12 @@
 
   <%= yield %>
 
-  <br/><br/><br/>
+  <br/><br/>
 
   <% if authenticated? %>
     <%= link_to 'Home', root_url %>
+    |
+    <%= link_to 'Manage Users', users_path %>
     |
     <%= link_to 'Log Out', sign_out_path %>
   <% end %>

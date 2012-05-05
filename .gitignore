@@ -19,3 +19,6 @@
 
 # Ignore IdeaVim directories.
 .idea
+
+# Ignore the precompiled assets on production.
+/public/assets

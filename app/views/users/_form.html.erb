@@ -1,0 +1,52 @@
+<% content_for :head do %>
+  <style>
+    label {
+      display: inline-block;
+      width: 100px;
+      text-align: right;
+    }
+  </style>
+<% end %>
+
+<%= form_for(@user) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </p>
+
+  <% if current_user.is_admin? %>
+    <p>
+      <%= f.label :is_admin %>
+      <%= f.check_box :is_admin %>
+    </p>
+  <% end %>
+
+  <p>
+    <%= f.label :password %>
+    <%= f.password_field :password, :value => '' %>
+  </p>
+  <p>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  </p>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+  <br/>
+
+<% end %>
+

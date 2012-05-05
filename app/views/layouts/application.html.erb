@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Sentinel</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <h1>Sentinel</h1>
+  <br/>
+
+  <% if flash[:error] %>
+    <div class="error sentinel"><%= flash[:error] %></div>
+  <% end %>
+  <% if flash[:notice] %>
+    <div class="notice sentinel"><%= flash[:notice] %></div>
+  <% end %>
+
+  <%= yield %>
+
+  <br/><br/><br/>
+
+  <% if authenticated? %>
+    <%= link_to 'Home', root_url %>
+    |
+    <%= link_to 'Log Out', sign_out_path %>
+  <% end %>
+
+</body>
+</html>

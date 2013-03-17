@@ -1,2 +1,2 @@
 #! /bin/bash
-/usr/bin/gpasswd -a brett admin
+/usr/bin/gpasswd -a brett sudo

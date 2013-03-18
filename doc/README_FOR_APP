@@ -1,2 +1,23 @@
-Use this README file to introduce your application and point to useful places in the API for learning more.
-Run "rake doc:app" to generate API documentation for your models, controllers, helpers, and libraries.
+Notes For Sentinel (to be fleshed out later)
+--------------------------------------------
+
+- Edit /etc/sysctl.conf and set "net.ipv4.ip_forward = 1".
+  - This does the "echo 1 > /proc/sys/net/ipv4/ip_forward" to enable NAT, but
+    persists across reboots.
+
+- Do some disallowed sudo command to see the actual command executed. It should
+  be straight to some path, not /usr/bin/env or something like that. Once had 
+  sudo as a bash alias to "sudo env PATH=$PATH", and it completely messed up
+  setting sudo perms on individual executables, which is necessary for the whole
+  sentinel setup.
+
+- IMHO, not worth the hassle to get sentinel running in some rvm environment.
+  Just use system ruby installed from the package repos.
+
+- At such a small scale, no need for multiple web listeners (with nginx/passenger
+  or the like). Nothing wrong with firing up a single mongrel process on port 80.
+  The script bin/start does just this.
+
+- Look in the etc directory for stuff that goes in /etc on the system, or that
+  generally pertains to things outside of the sentinel rails app. Some of this
+  is also used by scripts in bin (i.e., firewall rules).

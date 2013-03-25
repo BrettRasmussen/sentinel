@@ -1,0 +1,44 @@
+#
+# This file MUST be edited with the 'visudo' command as root.
+#
+# Please consider adding local content in /etc/sudoers.d/ instead of
+# directly modifying this file.
+#
+# See the man page for details on how to write a sudoers file.
+#
+#Defaults	env_reset
+#Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+Defaults	editor=/usr/bin/bvi
+Defaults  timestamp_timeout=60
+
+# Host alias specification
+
+# User alias specification
+
+# Cmnd alias specification
+
+# User privilege specification
+root	ALL=(ALL:ALL) ALL
+
+# Allow members of group sudo to execute any command
+%sudo	ALL=(ALL:ALL) ALL
+
+# Allow sentinel to do what it needs to do
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/lock
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/unlock
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-clear
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-unfiltered
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
+sentinel ALL = NOPASSWD: /usr/bin/pkill
+sentinel ALL = NOPASSWD: /usr/bin/groups
+
+# Allow brett the minimal needed privs associated w/sentinel
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync

@@ -37,3 +37,6 @@ Notes For Sentinel (to be fleshed out later)
 - Set up cron job to run bin/etc-sync each night to save any changes to the
   squid files, sudoers, etc. This cron job can go in the sentinel user's
   crontab.
+
+- Put etc/init.d/firewall script into /etc/init.d and run something like this:
+    prompt$ sudo update-rc.d firewall defaults 10

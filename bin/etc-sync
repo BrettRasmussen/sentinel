@@ -1,0 +1,13 @@
+#! /bin/bash
+cd "$( dirname "$0" )/.."
+su sentinel -c "git stash"
+rsync -v /etc/sudoers etc/
+chmod 0644 etc/sudoers
+rsync -av /etc/squid3 etc/
+find etc -iname .*.swp -exec rm {} \;
+chown -R sentinel:sentinel etc/
+su sentinel -c "git add etc"
+su sentinel -c "git commit -m 'sync etc directory'"
+su sentinel -c "git pull origin master"
+su sentinel -c "git push origin master"
+su sentinel -c "git stash pop"

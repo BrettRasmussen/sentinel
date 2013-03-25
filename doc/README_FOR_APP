@@ -33,3 +33,7 @@ Notes For Sentinel (to be fleshed out later)
     - HTTP_PROXY="http://192.168.1.1:3128" heroku run console --app some_app
     - in /etc/environment:
       http_proxy="http://192.168.1.1:3128"
+
+- Set up cron job to run bin/etc-sync each night to save any changes to the
+  squid files, sudoers, etc. This cron job can go in the sentinel user's
+  crontab.

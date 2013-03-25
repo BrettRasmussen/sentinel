@@ -225,3 +225,4 @@ timenewsfeed.files.wordpress.com
 .tgcdn.net
 .newegg.com
 .thegeekstuff.com
+.discovery.com

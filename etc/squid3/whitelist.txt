@@ -221,3 +221,6 @@ youngmormonfeminists.files.wordpress.com
 .merriam-webster.com
 .time.com
 timenewsfeed.files.wordpress.com
+.thinkgeek.com
+.newegg.com
+.thegeekstuff.com

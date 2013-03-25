@@ -21,3 +21,15 @@ Notes For Sentinel (to be fleshed out later)
 - Look in the etc directory for stuff that goes in /etc on the system, or that
   generally pertains to things outside of the sentinel rails app. Some of this
   is also used by scripts in bin (i.e., firewall rules).
+
+- To do some command-line things from the client machine through the http proxy,
+  you need to set certain environment variables. For example, aptitude uses the
+  http_proxy variable and heroku uses the HTTP_PROXY and HTTPS_PROXY variables.
+  Other apps probably use one or the other of these as well. Note that these
+  can be set in /etc/environment (especially for root commands) or any other
+  place environment variables get set, like bashrc.
+  - Some examples:
+    - sudo http_proxy="http://192.168.1.1:3128" aptitude install some_app
+    - HTTP_PROXY="http://192.168.1.1:3128" heroku run console --app some_app
+    - in /etc/environment:
+      http_proxy="http://192.168.1.1:3128"

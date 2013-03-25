@@ -222,5 +222,6 @@ youngmormonfeminists.files.wordpress.com
 .time.com
 timenewsfeed.files.wordpress.com
 .thinkgeek.com
+.tgcdn.net
 .newegg.com
 .thegeekstuff.com

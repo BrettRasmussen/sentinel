@@ -43,3 +43,4 @@ brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/lock

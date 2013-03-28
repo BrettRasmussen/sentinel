@@ -226,3 +226,4 @@ timenewsfeed.files.wordpress.com
 .newegg.com
 .thegeekstuff.com
 .discovery.com
+.history.com

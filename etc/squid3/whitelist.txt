@@ -229,3 +229,4 @@ timenewsfeed.files.wordpress.com
 .history.com
 .xoomforums.com
 .e-cap.org
+.fandango.com

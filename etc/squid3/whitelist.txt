@@ -227,3 +227,5 @@ timenewsfeed.files.wordpress.com
 .thegeekstuff.com
 .discovery.com
 .history.com
+.xoomforums.com
+.e-cap.org

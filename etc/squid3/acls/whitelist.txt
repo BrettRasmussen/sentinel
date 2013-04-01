@@ -154,6 +154,7 @@ us.archive.ubuntu.com
 .frozentux.net
 .redhat.com
 .theartofcharm.com
+cdn.theartofcharm.com.s3.amazonaws.com
 .davidwygant.com
 .visolve.com
 .ted.com

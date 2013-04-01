@@ -1,0 +1,17 @@
+Ideas about blocking google images
+----------------------------------
+
+- The first page of results comes down using the data: protocol. An article about it:
+    http://css-tricks.com/data-uris/
+  Seems it's just the image data embedded right in the html image tag or css background
+  url, etc. Maybe have to rewrite this in the response in squid.
+
+- All search results are in a div called "ires". Figure out if other google services use
+  the same div, and if not, block it somehow. Delete the whole div on the response side
+  in proxy server?
+  - Blah: the normal google search results are all in a div called ires.
+
+- Maybe could rewrite all google https urls on the response side in proxy server to http,
+  which would allow blockage in squid of anything with tbm=isch in the query string.
+
+- Are there any other ways of blocking tbm=isch?

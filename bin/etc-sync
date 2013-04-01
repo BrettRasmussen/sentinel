@@ -5,7 +5,7 @@ rsync -v /etc/sudoers etc/
 chmod 0644 etc/sudoers
 rsync -av /etc/squid3 etc/
 find etc -iname .*.swp -exec rm {} \;
-chown -R sentinel:sentinel etc/
+chown -R sentinel:sentinel .
 su sentinel -c "git add etc"
 su sentinel -c "git commit -m 'sync etc directory'"
 su sentinel -c "git pull origin master"

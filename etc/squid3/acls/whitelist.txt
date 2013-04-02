@@ -231,3 +231,5 @@ timenewsfeed.files.wordpress.com
 .xoomforums.com
 .e-cap.org
 .fandango.com
+.freedomfestival.org
+.stadiumoffire.com

@@ -148,6 +148,7 @@ us.archive.ubuntu.com
 .classical.com
 .pandora.com
 .edu
+.gov
 .linuxmail.info
 .timpanogoschorale.com
 .timpanogoschorale.org
@@ -231,3 +232,8 @@ timenewsfeed.files.wordpress.com
 .xoomforums.com
 .e-cap.org
 .fandango.com
+.freedomfestival.org
+.stadiumoffire.com
+.reference.com
+.pbs.org
+.npr.org

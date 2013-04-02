@@ -233,3 +233,4 @@ timenewsfeed.files.wordpress.com
 .fandango.com
 .freedomfestival.org
 .stadiumoffire.com
+.reference.com

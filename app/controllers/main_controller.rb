@@ -11,15 +11,13 @@ class MainController < ApplicationController
     begin
       unlock_cmd = Rails.root.join('bin', 'unlock')
       timeout(3) { %x{sudo #{unlock_cmd}} }
-      groups = ['sudo']
-      timeout(3) { groups = %x{sudo groups brett}.chomp.match(/^.*:(.*)/).to_a[1].split }
-      if groups.include?('sudo')
+      if $?.exitstatus == 0
         flash[:notice] = 'Firewall has been unlocked.'
       else
-        raise 'Failed to grant admin rights.'
+        raise 'Could not unlock firewall.'
       end
     rescue => e
-      flash[:error] = "Could not unlock firewall: #{e.message}"
+      flash[:error] = e.message
     end
     redirect_to :action => :index
   end
@@ -28,12 +26,13 @@ class MainController < ApplicationController
     begin
       lock_cmd = Rails.root.join('bin', 'lock')
       timeout(3) { %x{sudo #{lock_cmd}} }
-      groups = ['sudo']
-      timeout(3) { groups = %x{sudo groups brett}.chomp.match(/^.*:(.*)/).to_a[1].split }
-      raise 'Failed to revoke admin rights.' if groups.include?('sudo')
-      flash[:notice] = 'Firewall has been locked.'
+      if $?.exitstatus == 0
+        flash[:notice] = 'Firewall has been locked.'
+      else
+        raise 'Could not lock firewall.'
+      end
     rescue => e
-      flash[:error] = "Could not lock firewall: #{e.message}"
+      flash[:error] = e.message
     end
     redirect_to :action => :index
   end

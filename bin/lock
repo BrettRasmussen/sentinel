@@ -1,2 +1,3 @@
 #! /bin/bash
-/usr/bin/gpasswd -d brett sudo
+
+echo "sentinel:$(/usr/bin/uuid)" | /usr/sbin/chpasswd

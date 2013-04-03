@@ -240,3 +240,5 @@ timenewsfeed.files.wordpress.com
 .usatoday.com
 .gannett-cdn.com
 .revsci.net
+.reuters.com
+.reutersmedia.net

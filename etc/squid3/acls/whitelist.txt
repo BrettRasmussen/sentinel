@@ -237,3 +237,10 @@ timenewsfeed.files.wordpress.com
 .reference.com
 .pbs.org
 .npr.org
+.usatoday.com
+.gannett-cdn.com
+.revsci.net
+.reuters.com
+.reutersmedia.net
+.about.com
+.tqn.com

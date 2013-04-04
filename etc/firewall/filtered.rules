@@ -19,6 +19,8 @@ COMMIT
 :OUTPUT ACCEPT [0:0]
 -A INPUT -i lo -j ACCEPT
 -A OUTPUT -m owner --uid-owner root -j ACCEPT
+-A OUTPUT -m owner --uid-owner sentinel -j ACCEPT
+-A OUTPUT -m owner --uid-owner proxy -j ACCEPT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 2200 -j ACCEPT

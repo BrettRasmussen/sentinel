@@ -234,7 +234,6 @@ timenewsfeed.files.wordpress.com
 .fandango.com
 .freedomfestival.org
 .stadiumoffire.com
-.reference.com
 .pbs.org
 .npr.org
 .usatoday.com
@@ -246,3 +245,7 @@ timenewsfeed.files.wordpress.com
 .tqn.com
 .americafirst.com
 americafirstcreditun.tt.omtrdc.net
+.reference.com
+.dictionary.com
+.thesaurus.com
+.sfdict.com

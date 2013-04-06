@@ -244,3 +244,5 @@ timenewsfeed.files.wordpress.com
 .reutersmedia.net
 .about.com
 .tqn.com
+.americafirst.com
+americafirstcreditun.tt.omtrdc.net

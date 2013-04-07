@@ -249,3 +249,5 @@ americafirstcreditun.tt.omtrdc.net
 .dictionary.com
 .thesaurus.com
 .sfdict.com
+.ehow.com
+.ehowcdn.com

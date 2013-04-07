@@ -38,6 +38,7 @@ sentinel ALL = NOPASSWD: /usr/bin/groups
 
 # Allow brett the minimal needed privs associated w/sentinel
 brett ALL = NOPASSWD: /sbin/reboot
+brett ALL = NOPASSWD: /sbin/shutdown
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered

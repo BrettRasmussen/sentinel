@@ -253,3 +253,6 @@ americafirstcreditun.tt.omtrdc.net
 .ehowcdn.com
 .cnet.com
 .cbsistatic.com
+.linuxinsider.com
+.linuxmint.com
+.extremetech.com

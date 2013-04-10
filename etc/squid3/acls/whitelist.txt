@@ -256,3 +256,6 @@ americafirstcreditun.tt.omtrdc.net
 .linuxinsider.com
 .linuxmint.com
 .extremetech.com
+.lifecoaching.com
+.imdb.com
+media-imdb.com

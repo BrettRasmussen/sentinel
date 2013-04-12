@@ -55,6 +55,7 @@ us.archive.ubuntu.com
 .ubun2.com
 .ubuntugeek.com
 .askubuntu.com
+cdn.sstatic.net
 .4templates.com
 .amazon.com
 .images-amazon.com

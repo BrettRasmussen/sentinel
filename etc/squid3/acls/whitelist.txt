@@ -228,6 +228,7 @@ timenewsfeed.files.wordpress.com
 .newegg.com
 .thegeekstuff.com
 .discovery.com
+.ddmcdn.com
 .history.com
 .xoomforums.com
 .e-cap.org

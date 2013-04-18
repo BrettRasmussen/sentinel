@@ -266,3 +266,5 @@ americafirstcreditun.tt.omtrdc.net
 .taxact.com
 .taxactonline.com
 .twoedge.com
+.lifehacker.com
+.gawkerassets.com

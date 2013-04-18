@@ -146,6 +146,7 @@ cdn.sstatic.net
 .flixster.com
 .redbox.com
 .grooveshark.com
+.gs-cdn.net
 .classical.com
 .pandora.com
 .edu
@@ -169,6 +170,7 @@ cdn.theartofcharm.com.s3.amazonaws.com
 .serverfault.com
 .techsupportforum.com
 .lifehacker.com
+.gawkerassets.com
 .linuxreport.org
 .backreference.org
 .linuxtopia.org
@@ -264,10 +266,4 @@ americafirstcreditun.tt.omtrdc.net
 .arbinger.com
 .taxact.com
 .taxactonline.com
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 .twoedge.com
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes

@@ -146,6 +146,7 @@ cdn.sstatic.net
 .flixster.com
 .redbox.com
 .grooveshark.com
+.gs-cdn.net
 .classical.com
 .pandora.com
 .edu

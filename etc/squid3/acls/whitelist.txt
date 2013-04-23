@@ -225,7 +225,9 @@ youngmormonfeminists.files.wordpress.com
 .m-w.com
 .merriam-webster.com
 .time.com
+.timeinc.net
 timenewsfeed.files.wordpress.com
+timebusinessblog.files.wordpress.com
 .thinkgeek.com
 .tgcdn.net
 .newegg.com

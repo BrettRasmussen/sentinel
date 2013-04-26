@@ -277,3 +277,9 @@ dw.com.com
 abcnews.go.com
 .linkedin.com
 .licdn.com
+.webmonkey.com
+.codeplex.com
+.adobe.com
+.opera.com
+.myopera.com
+.html5rocks.com

@@ -286,3 +286,4 @@ abcnews.go.com
 .whatreallyhappened.com
 .groupon.com
 .grouponcdn.com
+.artlinefilms.com

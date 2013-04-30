@@ -284,3 +284,5 @@ abcnews.go.com
 .myopera.com
 .html5rocks.com
 .whatreallyhappened.com
+.groupon.com
+.grouponcdn.com

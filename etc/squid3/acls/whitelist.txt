@@ -287,3 +287,4 @@ abcnews.go.com
 .groupon.com
 .grouponcdn.com
 .artlinefilms.com
+.rubymotion.com

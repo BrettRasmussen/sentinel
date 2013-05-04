@@ -288,3 +288,5 @@ abcnews.go.com
 .grouponcdn.com
 .artlinefilms.com
 .rubymotion.com
+.arstechnica.com
+.arstechnica.net

@@ -290,3 +290,4 @@ abcnews.go.com
 .rubymotion.com
 .arstechnica.com
 .arstechnica.net
+stadiumchorus.herokuapp.com

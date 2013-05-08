@@ -291,3 +291,8 @@ abcnews.go.com
 .arstechnica.com
 .arstechnica.net
 stadiumchorus.herokuapp.com
+.theverge.com
+cd0.sbnation.com
+cd1.sbnation.com
+cd2.sbnation.com
+cd3.sbnation.com

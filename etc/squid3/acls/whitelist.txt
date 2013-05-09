@@ -296,3 +296,5 @@ cd0.sbnation.com
 cd1.sbnation.com
 cd2.sbnation.com
 cd3.sbnation.com
+.wikihow.com
+.whstatic.com

@@ -298,3 +298,4 @@ cd2.sbnation.com
 cd3.sbnation.com
 .wikihow.com
 .whstatic.com
+.easyeffort.com

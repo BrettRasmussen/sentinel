@@ -127,6 +127,7 @@ cdn.sstatic.net
 .byutv.org
 .theatlantic.com
 .theatlanticwire.com
+.theatlanticcities.com
 .qz.com
 .csmonitor.com
 .deseretnews.com

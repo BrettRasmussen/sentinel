@@ -1,0 +1,59 @@
+#! /usr/bin/env ruby-1.9.3-p392@prox
+
+require 'webrick'
+require 'webrick/httpproxy'
+require 'debugger'
+
+PLACEHOLDERS = {
+  'png' => open('checker.png', 'rb') {|io| io.read},
+  'jpeg' => open('checker.jpg', 'rb') {|io| io.read},
+  'gif' => open('checker.gif', 'rb') {|io| io.read}
+}
+
+RESTRICTED_MIMES = %w[
+  image/*
+]
+
+WHITELIST = File.readlines('../etc/squid3/acls/whitelist.txt').map {|line| line.chomp}
+
+handler = proc do |req, res|
+  debugger
+
+  WHITELIST.each do |domain|
+    if condition
+      
+    end
+  end
+
+  if res['content-type']
+    allowed = true
+    mime_type, mime_subtype = res['content-type'].split('/')
+    if RESTRICTED_MIMES.include?(res['content-type'])
+      allowed = false
+    else
+      restricted_mime_types = RESTRICTED_MIMES.map do |mime|
+        type, subtype = mime.split('/')
+        next if subtype != '*'
+        type
+      end.compact
+      allowed = false if restricted_mime_types.include?(mime_type)
+    end
+    if !allowed
+      res.body = PLACEHOLDERS[mime_subtype] || ''
+    end
+  end
+
+  #debugger if res['content-type'] == 'text/html' && (req.to_s.include?('github') || req.to_s.include?('twoedge'))
+
+  #if res['content-type'] == 'text/html' then
+    #res.body << "\nThis content was proxied!\n"
+  #end
+end
+
+#proxy = WEBrick::HTTPProxyServer.new Port: 8000
+proxy = WEBrick::HTTPProxyServer.new Port: 8000, ProxyContentHandler: handler
+
+trap 'INT'  do proxy.shutdown end
+trap 'TERM' do proxy.shutdown end
+
+proxy.start

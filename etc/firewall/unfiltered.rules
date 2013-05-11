@@ -10,6 +10,7 @@
 # Forward some inbound ports to inside the network. Port forwards using DNAT
 # also must be allowed in the FORWARD chain of the filter table below.
 -A PREROUTING -i eth0 -p tcp --dport 3000:3010 -j DNAT --to 192.168.1.20
+-A PREROUTING -i eth0 -p tcp --dport 7020 -j DNAT --to 192.168.1.20
 # Allow masquerading for everything not caught by the filter table rules.
 -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
 COMMIT
@@ -26,6 +27,6 @@ COMMIT
 -A OUTPUT -m owner --uid-owner root -j ACCEPT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 2200 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 7001 -j ACCEPT
 -A INPUT -i eth0 -j DROP
 COMMIT

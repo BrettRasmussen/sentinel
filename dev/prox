@@ -1,7 +1,6 @@
 #! /usr/bin/env ruby-1.9.3-p392@prox
 
-require 'webrick'
-require 'webrick/httpproxy'
+require './mitmproxy.rb'
 require 'debugger'
 
 PLACEHOLDERS = {
@@ -14,44 +13,51 @@ RESTRICTED_MIMES = %w[
   image/*
 ]
 
-WHITELIST = File.readlines('../etc/squid3/acls/whitelist.txt').map {|line| line.chomp}
+WHITELIST = File.readlines('../etc/squid3/acls/whitelist.txt').map do |line|
+  line.chomp.split('.').delete_if {|el| el == ''}
+end
 
 handler = proc do |req, res|
-  debugger
+  allowed = true
+  req_domain = req.header['host'][0].split('.').delete_if {|el| el == ''}
 
-  WHITELIST.each do |domain|
-    if condition
-      
+  if req_domain == %w[www google com]
+    #debugger
+  end
+
+  whitelisted = false
+  WHITELIST.each do |wl_domain|
+    if req_domain[-wl_domain.size..-1] == wl_domain
+      whitelisted = true
+      break
     end
   end
 
-  if res['content-type']
-    allowed = true
-    mime_type, mime_subtype = res['content-type'].split('/')
-    if RESTRICTED_MIMES.include?(res['content-type'])
-      allowed = false
-    else
-      restricted_mime_types = RESTRICTED_MIMES.map do |mime|
-        type, subtype = mime.split('/')
-        next if subtype != '*'
-        type
-      end.compact
-      allowed = false if restricted_mime_types.include?(mime_type)
-    end
-    if !allowed
-      res.body = PLACEHOLDERS[mime_subtype] || ''
+  if !whitelisted
+    if res['content-type']
+      mime_type, mime_subtype = res['content-type'].split('/')
+      if RESTRICTED_MIMES.include?(res['content-type'])
+        allowed = false
+      else
+        restricted_mime_types = RESTRICTED_MIMES.map do |mime|
+          type, subtype = mime.split('/')
+          next if subtype != '*'
+          type
+        end.compact
+        allowed = false if restricted_mime_types.include?(mime_type)
+      end
     end
   end
 
-  #debugger if res['content-type'] == 'text/html' && (req.to_s.include?('github') || req.to_s.include?('twoedge'))
-
-  #if res['content-type'] == 'text/html' then
-    #res.body << "\nThis content was proxied!\n"
-  #end
+  if !allowed
+    #res.body = PLACEHOLDERS[mime_subtype] || ''
+    res.body = ''
+  end
 end
 
 #proxy = WEBrick::HTTPProxyServer.new Port: 8000
-proxy = WEBrick::HTTPProxyServer.new Port: 8000, ProxyContentHandler: handler
+#proxy = WEBrick::HTTPProxyServer.new Port: 8000, ProxyContentHandler: handler
+proxy = MitmProxyServer.new Port: 8000, ProxyContentHandler: handler
 
 trap 'INT'  do proxy.shutdown end
 trap 'TERM' do proxy.shutdown end

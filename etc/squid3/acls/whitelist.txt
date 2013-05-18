@@ -300,3 +300,4 @@ cd3.sbnation.com
 .wikihow.com
 .whstatic.com
 .easyeffort.com
+.mailchimp.com

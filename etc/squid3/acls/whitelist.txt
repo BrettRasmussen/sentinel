@@ -303,3 +303,9 @@ cd3.sbnation.com
 .mailchimp.com
 .sweetwater.com
 .performanceaudio.com
+.jbl.com
+.jblpro.com
+.ebay.com
+.ebaystatic.com
+.sennheiser.com
+.sennheiserusa.com

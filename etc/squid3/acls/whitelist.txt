@@ -301,3 +301,4 @@ cd3.sbnation.com
 .whstatic.com
 .easyeffort.com
 .mailchimp.com
+.sweetwater.com

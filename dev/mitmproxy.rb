@@ -2,6 +2,10 @@ require 'webrick'
 require 'webrick/ssl'
 require 'webrick/httpproxy'
 
+class WEBrick::HTTPRequest
+  attr_reader :socket
+end
+
 class MitmProxyServer < WEBrick::HTTPProxyServer
   #def service(req, res)
     #if req.request_method == "CONNECT"

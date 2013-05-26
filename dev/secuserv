@@ -1,0 +1,183 @@
+#! /usr/bin/env ruby-1.9.3-p392@secuserv
+
+require 'debugger'
+require 'webrick'
+require 'socket'
+require 'openssl'
+require 'trollop'
+
+
+# Parse command-line options.
+opts = Trollop::options do
+  opt :port, "Port", :default => 8000
+  opt :secure, "Run in secure mode (https)"
+end
+
+
+# I like Rails' try method.
+class Object
+  def try(*a, &b)
+    return nil if self.nil?
+    if a.empty? && block_given?
+      yield self
+    else
+      __send__(*a, &b)
+    end
+  end
+end
+
+
+# An HTTP server that masquerades as any secure site out there by creating a
+# fake certificate claiming to be from that site. The cert will be signed by
+# this server's CA, so importing that CA into the browser should prevent
+# security warnings.
+class Secuserv
+  def initialize(port, secure=false)
+    @port = port
+    @secure = secure
+  end
+
+  def run
+    begin
+      @secure ? run_secure : run_standard
+    rescue Interrupt
+      puts "Shutdown request received."
+    rescue => e
+      debugger
+    ensure
+      @socket.try(:close)
+      puts "Shutting down."
+    end
+  end
+
+  def run_standard
+    @socket = TCPServer.new(@port)
+    puts "Secuserv listening on port #{@port}."
+
+    loop do
+      client = @socket.accept
+      Thread.new(client, &method(:serve))
+    end
+  rescue => e
+    raise e
+  end
+
+  def run_secure
+    @config = WEBrick::Config::HTTP.dup
+
+    tcp_server = TCPServer.new(@port)
+    context = OpenSSL::SSL::SSLContext.new
+    context.cert = ca_cert
+    context.key = ca_key
+    ssl_server = OpenSSL::SSL::SSLServer.new(tcp_server, context)
+
+    puts "Secuserv accepting HTTPS connections on port #{@port}."
+    client = ssl_server.accept
+    puts "past the accept line"
+
+    timeout = @config[:RequestTimeout]
+    while timeout > 0
+      break if IO.select([client], nil, nil, 0.5)
+      timeout = 0 if @status != :Running
+      timeout -= 0.5
+    end
+    raise WEBrick::HTTPStatus::EOFError if timeout <= 0
+    raise WEBrick::HTTPStatus::EOFError if client.eof?
+
+    req = WEBrick::HTTPRequest.new(@config)
+    req.parse(client)
+    puts "request parsed"
+
+    res = WEBrick::HTTPResponse.new(@config)
+    res.request_method = req.request_method
+    res.request_uri = req.request_uri
+    res.request_http_version = req.http_version
+    res.keep_alive = req.keep_alive?
+    res.body = "woot!"
+    res.send_response(client)
+
+    client.close
+  rescue => e
+    debugger
+    puts
+  end
+
+  def serve(client)
+    puts "in serve"
+    req = WEBrick::HTTPRequest.new(WEBrick::Config::HTTP)
+    req.parse(client)
+    puts "[#{client} #{timestamp}]: web request received: #{req.host}"
+
+    begin
+      res = WEBrick::HTTPResponse.new(WEBrick::Config::HTTP)
+      res.request_method = req.request_method
+      res.request_uri = req.request_uri
+      res.request_http_version = req.http_version
+      res.keep_alive = req.keep_alive?
+      res.body = "woot!"
+      res.send_response(client)
+    rescue => e
+      debugger
+      puts
+    end
+
+    #if req.request_method == 'CONNECT'
+      #do_CONNECT(client, req, res)
+    #end
+    #client.close
+  end
+
+  def do_CONNECT(client, req, res)
+    key = OpenSSL::PKey::RSA.new 2048
+    cert = fake_cert(key, req)
+    context = OpenSSL::SSL::SSLContext.new
+    context.cert = cert
+    context.key = key
+    context.verify_mode = OpenSSL::SSL::VERIFY_NONE
+    ssl_sock = OpenSSL::SSL::SSLSocket.new(client, context)
+    res.send_response(ssl_sock)
+  rescue => e
+    debugger
+    puts
+  end
+
+  def fake_cert(key, req=nil)
+    name = OpenSSL::X509::Name.parse 'CN=TwoEdge/DC=twoedge.com'
+
+    cert = OpenSSL::X509::Certificate.new
+    cert.version = 2
+    cert.serial = 0
+    now = Time.now
+    cert.not_before = now
+    cert.not_after = now + 86400
+    cert.public_key = key.public_key
+    cert.subject = name
+    cert.issuer = ca_cert.issuer
+
+    xfac = OpenSSL::X509::ExtensionFactory.new(nil, cert)
+    xfac.issuer_certificate = ca_cert
+    xfac.create_extension('basicConstraints', 'CA:FALSE')
+    xfac.create_extension('keyUsage', 'keyEncipherment,dataEncipherment,digitalSignature')
+    xfac.create_extension('subjectKeyIdentifier', 'hash')
+
+    cert.sign(ca_key, OpenSSL::Digest::SHA1.new)
+    cert
+  end
+
+  def ca_key
+    return @ca_key if @ca_key
+    key_pem = File.read('ca_key.pem')
+    @ca_key = OpenSSL::PKey::RSA.new(key_pem, 'secuserv')
+  end
+
+  def ca_cert
+    return @ca_cert if @ca_cert
+    @ca_cert = OpenSSL::X509::Certificate.new(File.read('ca_cert.pem'))
+  end
+
+  def timestamp
+    Time.now.strftime('%s.%L')
+  end
+end
+
+Secuserv.new(opts[:port], opts[:secure]).run

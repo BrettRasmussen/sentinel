@@ -309,3 +309,4 @@ cd3.sbnation.com
 .ebaystatic.com
 .sennheiser.com
 .sennheiserusa.com
+.aworkoutroutine.com

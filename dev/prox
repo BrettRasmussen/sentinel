@@ -1,6 +1,8 @@
 #! /usr/bin/env ruby-1.9.3-p392@prox
 
-require './mitmproxy.rb'
+require 'webrick'
+require 'webrick/ssl'
+require 'webrick/httpproxy'
 require 'debugger'
 
 PLACEHOLDERS = {
@@ -56,8 +58,8 @@ handler = proc do |req, res|
 end
 
 #proxy = WEBrick::HTTPProxyServer.new Port: 8000
-#proxy = WEBrick::HTTPProxyServer.new Port: 8000, ProxyContentHandler: handler
-proxy = MitmProxyServer.new Port: 8000, ProxyContentHandler: handler
+proxy = WEBrick::HTTPProxyServer.new Port: 8000, ProxyContentHandler: handler
+#proxy = MitmProxyServer.new Port: 8000, ProxyContentHandler: handler
 
 trap 'INT'  do proxy.shutdown end
 trap 'TERM' do proxy.shutdown end

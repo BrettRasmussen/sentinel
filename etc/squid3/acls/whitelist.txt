@@ -313,3 +313,8 @@ cd3.sbnation.com
 .acaloriecounter.com
 .garnjenseninsurance.com
 .bearrivermutual.com
+.bbc.co.uk
+.bbc.com
+.bbci.co.uk
+.bbcimg.co.uk
+.mercola.com

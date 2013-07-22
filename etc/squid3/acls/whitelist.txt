@@ -318,3 +318,4 @@ cd3.sbnation.com
 .bbci.co.uk
 .bbcimg.co.uk
 .mercola.com
+.natureworldnews.com

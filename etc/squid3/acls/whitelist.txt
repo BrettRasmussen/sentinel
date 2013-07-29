@@ -319,3 +319,4 @@ cd3.sbnation.com
 .bbcimg.co.uk
 .mercola.com
 .natureworldnews.com
+.scienceworldreport.com

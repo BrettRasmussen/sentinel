@@ -320,3 +320,6 @@ cd3.sbnation.com
 .mercola.com
 .natureworldnews.com
 .scienceworldreport.com
+.bedbathandbeyond.com
+.potterybarn.com
+.pbimgs.com

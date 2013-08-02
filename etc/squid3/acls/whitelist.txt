@@ -324,3 +324,4 @@ cd3.sbnation.com
 .potterybarn.com
 .pbimgs.com
 .headphone.com
+.crashplan.com

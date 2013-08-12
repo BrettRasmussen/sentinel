@@ -355,4 +355,7 @@ cd3.sbnation.com
 .jazzslc.com
 .nowplayinginutah.com
 .visitsaltlake.com
+.visitutah.com
 svcdn.simpleviewinc.com
+.cityweekly.net
+.festivals.com

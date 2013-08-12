@@ -353,3 +353,6 @@ cd3.sbnation.com
 .slcjazzfestival.org
 .jazzfestival2013.com
 .jazzslc.com
+.nowplayinginutah.com
+.visitsaltlake.com
+svcdn.simpleviewinc.com

@@ -348,3 +348,8 @@ cd3.sbnation.com
 .discgolfstation.com
 .discgolfreviewer.com
 .discgolfforkidssake.com
+.apple.com
+.androidcentral.com
+.slcjazzfestival.org
+.jazzfestival2013.com
+.jazzslc.com

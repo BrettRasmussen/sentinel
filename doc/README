@@ -6,7 +6,7 @@ Notes For Sentinel (to be fleshed out later)
     persists across reboots.
 
 - Do some disallowed sudo command to see the actual command executed. It should
-  be straight to some path, not /usr/bin/env or something like that. Once had 
+  be straight to some path, not /usr/bin/env or something like that. Once had
   sudo as a bash alias to "sudo env PATH=$PATH", and it completely messed up
   setting sudo perms on individual executables, which is necessary for the whole
   sentinel setup.

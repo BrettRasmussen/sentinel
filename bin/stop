@@ -1,2 +1,3 @@
 #! /bin/bash
 pkill -f ruby.*rails.*80
+RAILS_ENV=production ./script/delayed_job stop

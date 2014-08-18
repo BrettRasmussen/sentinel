@@ -359,3 +359,4 @@ cd3.sbnation.com
 svcdn.simpleviewinc.com
 .cityweekly.net
 .festivals.com
+.youtube.com

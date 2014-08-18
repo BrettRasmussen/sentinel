@@ -6,6 +6,7 @@ gem 'therubyracer'
 gem 'quo_vadis'
 gem 'mongrel', '1.2.0.pre2'
 gem 'jquery-rails'
+gem 'delayed_job_active_record'
 
 # Gems used only for assets and not required
 # in production environments by default.

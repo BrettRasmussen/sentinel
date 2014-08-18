@@ -1,3 +1,4 @@
 #! /bin/bash
 
-echo "sentinel:$(/usr/bin/uuid)" | /usr/sbin/chpasswd
+#echo "sentinel:$(/usr/bin/uuid)" | /usr/sbin/chpasswd
+echo "sentinel:[sdfwer]" | /usr/sbin/chpasswd

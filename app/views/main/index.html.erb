@@ -1,7 +1,13 @@
-<form action="<%= unlock_url %>">
-  <%= submit_tag 'Unlock Firewall' %>
-</form>
-
 <form action="<%= lock_url %>">
   <%= submit_tag 'Lock Firewall' %>
 </form>
+
+<% if current_user.is_admin? %>
+  <form action="<%= unlock_url %>">
+    <%= submit_tag 'Unlock Firewall' %>
+  </form>
+<% else %>
+  <form action="<%= delayed_unlock_url %>">
+    <%= submit_tag 'Unlock Firewall' %> In 1 Hour
+  </form>
+<% end %>

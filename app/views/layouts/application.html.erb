@@ -25,6 +25,8 @@
   <% if authenticated? %>
     <%= link_to 'Home', root_url %>
     |
+    <%= link_to 'Whitelist', whitelist_path %>
+    |
     <%= link_to 'Manage Users', users_path %>
     |
     <%= link_to 'Log Out', sign_out_path %>

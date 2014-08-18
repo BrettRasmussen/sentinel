@@ -2,3 +2,6 @@
 pkill -f ruby.*rails.*80
 cd "$( dirname "$0" )/.."
 rails server mongrel -e production -p 80
+
+RAILS_ENV=production ./script/delayed_job stop
+RAILS_ENV=production ./script/delayed_job start

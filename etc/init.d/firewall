@@ -1,2 +1,3 @@
 #! /bin/bash
-/home/sentinel/sentinel/bin/fw-filtered
+echo 1 > /proc/sys/net/ipv4/ip_forward
+/home/sentinel/sentinel/bin/fw-unfiltered

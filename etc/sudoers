@@ -28,26 +28,28 @@ root	ALL=(ALL:ALL) ALL
 %sudo	ALL=(ALL:ALL) ALL
 
 # Allow sentinel to do what it needs to do
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/lock
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/unlock
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/delayed-unlock
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-clear
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-unfiltered
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
-sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
 sentinel ALL = NOPASSWD: /usr/bin/pkill
 sentinel ALL = NOPASSWD: /usr/bin/groups
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/delayed-unlock
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/dg-restart
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-unfiltered
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-clear
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/lock
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
+sentinel ALL = NOPASSWD: /home/sentinel/sentinel/bin/unlock
 
 # Allow brett the minimal needed privs associated w/sentinel
 brett ALL = NOPASSWD: /sbin/reboot
 brett ALL = NOPASSWD: /sbin/shutdown
-brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
-brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/delayed-unlock
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/dg-restart
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/fw-filtered
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/iptables-l
-brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/etc-sync
 brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/lock
-brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/delayed-unlock
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/start
+brett ALL = NOPASSWD: /home/sentinel/sentinel/bin/stop

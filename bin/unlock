@@ -1,3 +1,4 @@
 #! /bin/bash
 
 echo "sentinel:choc70dark" | /usr/sbin/chpasswd
+echo "sentinel unlocked"

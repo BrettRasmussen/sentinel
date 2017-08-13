@@ -9,12 +9,12 @@
 :POSTROUTING ACCEPT [0:0]
 # Forward some inbound ports to inside the network. Port forwards using DNAT
 # also must be allowed in the FORWARD chain of the filter table below.
--A PREROUTING -i eth0 -p tcp --dport 3000:3010 -j DNAT --to 192.168.1.20
--A PREROUTING -i eth0 -p tcp --dport 7020 -j DNAT --to 192.168.1.20
+-A PREROUTING -i enp1s0 -p tcp --dport 3000:3010 -j DNAT --to 192.168.1.20
+-A PREROUTING -i enp1s0 -p tcp --dport 7020 -j DNAT --to 192.168.1.20
 # Redirect standard web traffic to dansguardian.
--A PREROUTING -i eth1 -p tcp --dport 80 -j REDIRECT --to-port 8080
+-A PREROUTING -i enp2s0 -p tcp --dport 80 -j REDIRECT --to-port 8080
 # Allow masquerading for everything not caught by the filter table rules.
--A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
+-A POSTROUTING -s 192.168.1.0/24 -o enp1s0 -j MASQUERADE
 COMMIT
 
 
@@ -25,7 +25,7 @@ COMMIT
 :FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -i lo -j ACCEPT
--A FORWARD -i eth0 -p tcp -d 192.168.1.20 --dport 3000:3010 -j ACCEPT
+-A FORWARD -i enp1s0 -p tcp -d 192.168.1.20 --dport 3000:3010 -j ACCEPT
 -A OUTPUT -m owner --uid-owner root -j ACCEPT
 -A OUTPUT -m owner --uid-owner sentinel -j ACCEPT
 -A OUTPUT -m owner --uid-owner proxy -j ACCEPT
@@ -33,11 +33,11 @@ COMMIT
 -A INPUT -m conntrack --ctstate RELATED,ESTABLISHED -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 7001 -j ACCEPT
--A INPUT -i eth0 -j DROP
--A INPUT -i eth1 -p tcp -m tcp --dport 3128 -j DROP
+-A INPUT -i enp1s0 -j DROP
+-A INPUT -i enp2s0 -p tcp -m tcp --dport 3128 -j DROP
 -A OUTPUT -p tcp -m tcp --dport 3128 -j DROP
-#-A FORWARD -i eth1 -p tcp -m tcp --dport 80 -j DROP
+#-A FORWARD -i enp2s0 -p tcp -m tcp --dport 80 -j DROP
 #-A OUTPUT -p tcp -m tcp --dport 80 -j DROP
--A FORWARD -i eth1 -p tcp -m tcp --dport 443 -j DROP
+-A FORWARD -i enp2s0 -p tcp -m tcp --dport 443 -j DROP
 -A OUTPUT -p tcp -m tcp --dport 443 -j DROP
 COMMIT
